@@ -10,6 +10,9 @@ cd C/
 echo "C++"
 cd ../C++/
 ./run.sh
+echo "C#"
+cd ../C#/
+./run.sh
 echo "Julia"
 cd ../Julia/
 ./run.sh

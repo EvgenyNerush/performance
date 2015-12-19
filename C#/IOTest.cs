@@ -14,8 +14,7 @@ namespace IOTest
             Random random = new Random();
             List<float> rands = new List<float>();
 
-            Stopwatch stw = new Stopwatch();
-            stw.Start();
+            Stopwatch stw = Stopwatch.StartNew();
 
             while (i < N)
             {
@@ -65,8 +64,6 @@ namespace IOTest
             Console.WriteLine("generation took = {0} s", genTime.TotalSeconds);
             Console.WriteLine("o time = {0} s", outTime.TotalSeconds);
             Console.WriteLine("i time = {0} s", inTime.TotalSeconds);
-
-            Console.Read();
         }
     }
 }
