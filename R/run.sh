@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 echo "=== R ===" > report
 R --version | head -n 1 >> report

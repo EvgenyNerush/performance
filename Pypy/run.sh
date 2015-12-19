@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 echo "=== Pypy ===" > report
 pypy3 -V 2>> report

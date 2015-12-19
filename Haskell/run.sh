@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 echo "=== Haskell ===" > report
 ghc -V | head -n 1 >> report
