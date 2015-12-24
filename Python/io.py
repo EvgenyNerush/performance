@@ -2,9 +2,24 @@
 
 import time
 import numpy as np
+#from numba import jit
 
 n = 2000000
 rand_number = np.empty(n);
+
+# 'numba' generation
+#@jit
+#def r2(m):
+#    a = np.empty(m)
+#    i = 0
+#    while i < m:
+#        r1 = np.random.rand()
+#        r2 = np.random.rand()
+#        if r2 < np.arcsin(np.sqrt(r1)) / (np.pi / 2):
+#            a[i] = r1
+#            i += 1
+t_1 = time.perf_counter()
+#rand_number = r2(n)
 
 t0 = time.perf_counter()
 # 'fast' method of generation
@@ -48,6 +63,7 @@ t4 = time.perf_counter()
 
 print('io.py')
 print("result = ", s / n)
+print("numba generation took " + str(t_1 - t0) + " s")
 print("fast generation took " + str(t1 - t0) + " s")
 print("generation took " + str(t2 - t1) + " s")
 print("o time = " + str(t3 - t2) + " s")
