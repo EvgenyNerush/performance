@@ -17,9 +17,10 @@ m = 1.2 # additional space in xlim is proportional to m - 1
 defaultstyle = {'markersize': ms, 'markeredgewidth': 0}
 
 # kwargs which define different style for different languages
-langstyle = {'C': {'color': 'DodgerBlue'}, 'C++': {'color': 'DeepSkyBlue'}, 'Julia':
-        {'color': 'DeepPink'}, 'Pypy': {'color': 'YellowGreen'}, 'Python': {'color':
-            'Gold'}, 'Haskell': {'color': 'BlueViolet'}, 'R' : {'color': 'Gray'}}
+langstyle = {'C': {'color': 'DodgerBlue'}, 'C++': {'color': 'DeepSkyBlue'},
+        'Julia': {'color': 'DeepPink'}, 'Pypy': {'color': 'YellowGreen'},
+        'Python': {'color': 'Gold'}, 'Haskell': {'color': 'BlueViolet'}, 'R' :
+        {'color': 'Gray'}, 'C#': {'color': 'Thistle'}}
 # kwargs which define different style for different tests
 teststyle = {'generation': {'marker': 'o'}, 'output': {'marker': '>'}, 'input':
         {'marker': '<'}}

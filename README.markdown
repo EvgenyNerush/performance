@@ -39,7 +39,7 @@ in the Figure below.
 Here marker type corresponds to test type ('o' to the random number generation,
 '<' to output and '>' to input). Marker color corresponds to the language: blue
 to C, light blue to C++, pink to Julia, violet to Haskell, yellow to Python,
-green to Pypy and gray to R.
+green to Pypy, gray to R, light gray-purple to C#.
 
 ### Notes
 
