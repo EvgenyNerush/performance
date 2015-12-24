@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 date > report
 uname -romn >> report
@@ -9,6 +9,9 @@ cd C/
 ./run.sh
 echo "C++"
 cd ../C++/
+./run.sh
+echo "C#"
+cd ../C#/
 ./run.sh
 echo "Julia"
 cd ../Julia/

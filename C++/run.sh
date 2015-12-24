@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 echo "=== C++ ===" > report
 g++ --version | head -n 1 >> report
