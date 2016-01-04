@@ -1,11 +1,11 @@
 ### Overview
 
-Performance tests (for Linux) of programming languages for scientific
-calculations, namely Python, Julia, R and Haskell, which are compared to C and
-C++.
+Performance tests (for Linux) of (not only) programming languages for scientific
+calculations, namely Python, Julia, R, C#, Rust and Haskell, which are compared
+to C and C++.
 
-Performance of math, file output and file input is measured as follows.  First,
-random numbers, uniform in (0,1), are generated.  Pairs of random numbers are
+Performance of math, file output and file input is measured as follows. First,
+random numbers, uniform in (0,1), are generated. Pairs of random numbers are
 used to generate floats distributed so that the distribution function is
 proportional to *arcsin(sqrt(x))*, and these floats are dumped to the file
 `generated_rand_numbers`. Then these numbers are read from the file and
@@ -15,7 +15,8 @@ center-of-mass of this distribution is computed. The answer should be *5/8 =
 ### How to use
 
 WARNING: Running of all the tests can take tens of minutes! Do not run Haskell
-tests to see results quickly. R and Python tests can also last minutes.
+tests to see results quickly. R and Python tests can also last minutes. Rust
+test can take time to install some crates.
 
 To run all the tests, execute  
 `$ ./runMe.sh`  
@@ -39,20 +40,25 @@ in the Figure below.
 Here marker type corresponds to test type ('o' to the random number generation,
 '<' to output and '>' to input). Marker color corresponds to the language: blue
 to C, light blue to C++, pink to Julia, violet to Haskell, yellow to Python,
-green to Pypy, gray to R, light gray-purple to C#.
+green to Pypy, gray to R, light gray-purple to C#, orange to Rust.
 
 ### Notes
 
 As far as `for` loop in R and Python are too slow, alternative methods for
-generation of random numbers are provided.  For this reason  alternative Python
+generation of random numbers are provided. For this reason alternative Python
 script for running with Pypy is also provided.
 
-Pypy io time is extremely short for some reason (possible because binary io was
-used).
+Pypy io time is extremely short because binary io was used.
 
 Input and output in Haskell is written with buffering, however this doesn't
 improve io performance much.  Functions like `readFile` can probably break
 through.
+
+Variation of generation test that uses ternary operator in C yield the same
+speed as if-else generation.
+
+Tests for C++ ran with g++ and clang++ took the same time. Rust compiler uses
+llvm (as clang++ does) but (surprisingly) generates slower code than clang++.
 
 ### Dependencies
 

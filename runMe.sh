@@ -9,9 +9,12 @@ cd C/
 ./run.sh
 echo "C++"
 cd ../C++/
-./run.sh
+./run.sh && ./runClang.sh
 echo "C#"
 cd ../C#/
+./run.sh
+echo "Rust"
+cd ../Rust/
 ./run.sh
 echo "Julia"
 cd ../Julia/

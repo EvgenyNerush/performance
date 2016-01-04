@@ -1,0 +1,13 @@
+[package]
+
+name = "io"
+version = "0.0.1"
+
+[dependencies]
+
+rand = "0.3.0"
+time = "0.1"
+
+#[profile.release]
+#opt-level = 3
+#lto = true
