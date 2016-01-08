@@ -39,4 +39,25 @@ fn main() {
     let t2 = time::precise_time_ns();
     println!("2nd method gives = {}", sum2 / n as f64);
     println!("...that takes {} s", (t2 - t1) as f64 / 1.0e9);
+    // 3rd method uses lcg rng from C99 standard suggestion, see
+    // https://en.wikipedia.org/wiki/Linear_congruential_generator
+    const M: u32 = 2_147_483_648; // 2^31
+    const A: u32 = 1_103_515_245;
+    const C: u32 = 12_345;
+    let mut x: u32 = 5; // rng state
+    let mut sum3 = 0.0;
+    for _ in 0..(2 * n) { // int_0^1 asin(sqrt(x)) dx = 1 / 2
+        x = (A * x + C) & (M - 1); // fast mod (2^N) operation
+        let r1 = (x as f64) / (M as f64);
+        x = (A * x + C) & (M - 1); // fast mod (2^N) operation
+        let r2 = (x as f64) / (M as f64);
+        sum3 += if r2 < f64::asin(f64::sqrt(r1)) / (consts::PI / 2.0) {
+            r1
+        } else {
+            0.0
+        }
+    }
+    let t3 = time::precise_time_ns();
+    println!("3rd method gives = {}", sum3 / (n as f64));
+    println!("...that takes {} s", (t3 - t2) as f64 / 1.0e9);
 }

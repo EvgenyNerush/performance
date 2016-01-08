@@ -51,14 +51,16 @@ script for running with Pypy is also provided.
 Pypy io time is extremely short because binary io was used.
 
 Input and output in Haskell is written with buffering, however this doesn't
-improve io performance much.  Functions like `readFile` can probably break
+improve io performance much. Functions like `readFile` can probably break
 through.
 
 Variation of generation test that uses ternary operator in C yield the same
 speed as if-else generation.
 
 Tests for C++ ran with g++ and clang++ took the same time. Rust compiler uses
-llvm (as clang++ does) but (surprisingly) generates slower code than clang++.
+llvm (as clang++ does) but generates slower code than clang++. This happens
+because of very slow random generator used in Rust, if the RNG is replaced by
+linear congruential generator, Rust code becomes as fast as C++ code.
 
 ### Dependencies
 
