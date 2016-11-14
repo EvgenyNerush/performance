@@ -1,7 +1,9 @@
 *.swp
 *.o
-*.hi
 *.html
 a.out
 report
 generated_rand_numbers
+Rust/Cargo.lock
+Rust/target
+C#/IOTest.exe

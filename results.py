@@ -1,5 +1,5 @@
 # sets of results; the only one time value for C test can be given, but for
-# other languages a list of execution times (for divverent variants of code, for
+# other languages a list of execution times (for different variants of code, for
 # example) can be given
 
 # set = {'testname': (ctime, {'languge_name': [time, ...]}), ...}
