@@ -47,7 +47,7 @@ It is seen that R and Python random-number generation is extremely slow, Rust is
 than C and Haskell is 1.5 times slower than Rust. Haskell input is also extremely slow.
 
 With Pypy RN generation speed becomes 30 times higher than with Python interpreter, and I/O speed
-becomes orders of magnitude higher with binary output. However, Pypy cannot be used with any Python
+becomes orders of magnitude higher with binary output. However, Pypy cannot be used with all Python
 code, and files written in binary mode are not human-readable.
 
 Test of C code together with *clang* compiler (that is based on *llvm* as well as *rustc*) shows
@@ -62,7 +62,7 @@ As far as `for` loops in R and Python are too slow, alternative, slightly tricky
 generation of random numbers were provided. These methods are based on 'vector' operations and
 require much less work of the interpreters than the previous methods.
 
-Haskell code was also improved, with use of `Data.Vector.Storable` and binary I/O.
+Haskell code was also improved, with use of `Data.Vector.Unboxed` and binary I/O.
 
 The obtained results are shown in Figure below.
 
@@ -72,5 +72,5 @@ The obtained results are shown in Figure below.
 
 Performance of all the tested languages is not as crucial as choosing of 'right' methods and
 algorithms. Python, R or Julian can be a good choise if sophisticated plotting features are needed
-(provided by *matplotlib* in Python, *ggplot2* in R and *gadfly* in Julia, respectively). Haskell
+(provided by *matplotlib* in Python, *ggplot2* in R and *gadfly* in Julia). Haskell
 is quite fast and interesting. C, C++ and Rust can be chosen if performance is really important.

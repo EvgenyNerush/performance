@@ -4,7 +4,7 @@
 module Main where
 
 import Data.Word
-import qualified Data.Vector.Storable as U
+import qualified Data.Vector.Unboxed as U
 import qualified Data.ByteString as BS
 import qualified Data.Store as S
 import System.Clock
