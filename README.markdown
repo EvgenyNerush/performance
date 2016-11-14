@@ -7,20 +7,20 @@ to C and C++.
 Performance of math, file output and file input is measured as follows. First,
 random numbers, uniform in (0,1), are generated. Pairs of random numbers are
 used to generate floats distributed so that the distribution function is
-proportional to *arcsin(sqrt(x))*, and these floats are dumped to the file
-`generated_rand_numbers`. Then these numbers are read from the file and
-center-of-mass of this distribution is computed. The answer should be *5/8 =
-0.625*.
+proportional to `arcsin(sqrt(x))`, and these floats are dumped to the file
+*generated\_rand\_numbers*. Then these numbers are read from the file and
+center-of-mass of this distribution is computed. The answer should be `5/8 =
+0.625`.
+
+Running of all the tests can take about a minute. Rust
+test can take time to install some crates. Haskell test can demand manual
+installation of some packages (see `Haskell/io.cabal`).
 
 ### How to use
 
-WARNING: Running of all the tests can take tens of minutes! Do not run Haskell
-tests to see results quickly. R and Python tests can also last minutes. Rust
-test can take time to install some crates.
-
 To run all the tests, execute  
 `$ ./runMe.sh`  
-Comment some lines containing `./run.sh` in that file if you do not want run
+Comment some lines containing `./run.sh` in `runMe.sh` file if you do not want run
 tests for some languages.
 
 Test results are stored in `report` files. To see them, run  
@@ -30,44 +30,47 @@ Test results are stored in `report` files. To see them, run
 Test results can be then manually added to `results.py` file and plotted with
 `plotResults.py`.
 
-### Example
+### First results
 
-Results obtained with Intel(R) Xeon(R) X5550 CPU @ 2.67GHz processor are shown
-in the Figure below.
+First, 'naive' tests were written. Their results obtained with Intel(R)
+Xeon(R) X5550 CPU @ 2.67GHz processor are shown in Figure below.
 
-![results.png](results.png)
+![naive](results_set2.png)
 
 Here marker type corresponds to test type ('o' to the random number generation,
 '<' to output and '>' to input). Marker color corresponds to the language: blue
 to C, light blue to C++, pink to Julia, violet to Haskell, yellow to Python,
-green to Pypy, gray to R, light gray-purple to C#, orange to Rust.
+green to Pypy, gray to R, light gray-purple to C#, orange to Rust. Note that
+subplots differ only by scale of y axis.
 
-### Notes
+It is seen that R and Python random-number generation is extremely slow, Rust is about twice slower
+than C and Haskell is 1.5 times slower than Rust. Haskell input is also extremely slow.
 
-As far as `for` loop in R and Python are too slow, alternative methods for
-generation of random numbers are provided. For this reason alternative Python
-script for running with Pypy is also provided.
+With Pypy RN generation speed becomes 30 times higher than with Python interpreter, and I/O speed
+becomes orders of magnitude higher with binary output. However, Pypy cannot be used with any Python
+code, and files written in binary mode are not human-readable.
 
-Pypy io time is extremely short because binary io was used.
+Test of C code together with *clang* compiler (that is based on *llvm* as well as *rustc*) shows
+the same performance as was obtained with *gcc*.
 
-Input and output in Haskell is written with buffering, however this doesn't
-improve io performance much. Functions like `readFile` can probably break
-through.
+### Slightly better code
 
-Variation of generation test that uses ternary operator in C yield the same
-speed as if-else generation.
+In order to improve Rust code, Rust RNG was replaced by simple linear congruential generator,
+similat to used by C and C++ codes. This lead to the same performance of Rust and C++ codes.
 
-Tests for C++ ran with g++ and clang++ took the same time. Rust compiler uses
-llvm (as clang++ does) but generates slower code than clang++. This happens
-because of very slow random generator used in Rust, if the RNG is replaced by
-linear congruential generator, Rust code becomes as fast as C++ code.
+As far as `for` loops in R and Python are too slow, alternative, slightly tricky, methods for
+generation of random numbers were provided. These methods are based on 'vector' operations and
+require much less work of the interpreters than the previous methods.
 
-### Dependencies
+Haskell code was also improved, with use of `Data.Vector.Storable` and binary I/O.
 
-Haskell code uses *criterion* package.
+The obtained results are shown in Figure below.
 
-Pypy is used.
+![fast](results_set3.png)
 
-Python3 is used.
+### Conclusion
 
-g++ with -std=c++11 is used.
+Performance of all the tested languages is not as crucial as choosing of 'right' methods and
+algorithms. Python, R or Julian can be a good choise if sophisticated plotting features are needed
+(provided by *matplotlib* in Python, *ggplot2* in R and *gadfly* in Julia, respectively). Haskell
+is quite fast and interesting. C, C++ and Rust can be chosen if performance is really important.

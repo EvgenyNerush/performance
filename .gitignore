@@ -7,3 +7,5 @@ generated_rand_numbers
 Rust/Cargo.lock
 Rust/target
 C#/IOTest.exe
+Haskell/dist
+__pycache__

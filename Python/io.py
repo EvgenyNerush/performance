@@ -35,13 +35,13 @@ rand_number = a[:n]
 
 t1 = time.perf_counter()
 # 'slow' generation
-i = 0
-while i < n:
-    r1 = np.random.rand()
-    r2 = np.random.rand()
-    if r2 < np.arcsin(np.sqrt(r1)) / (np.pi / 2):
-        rand_number[i] = r1
-        i += 1
+#i = 0
+#while i < n:
+#    r1 = np.random.rand()
+#    r2 = np.random.rand()
+#    if r2 < np.arcsin(np.sqrt(r1)) / (np.pi / 2):
+#        rand_number[i] = r1
+#        i += 1
 
 t2 = time.perf_counter()
 

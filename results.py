@@ -22,4 +22,19 @@ set1 = {'generation': (0.287, {'C++': [0.216], 'Julia': [0.276], 'Pypy':
         [11.6], 'C#': [0.832]}), 'input': (0.512, {'C++': [0.661], 'Julia':
             [0.804], 'Pypy': [0.058], 'Python': [1.26], 'Haskell': [17.4], 'R':
             [4.13], 'C#': [0.701]})}
-
+# slow versions from set1 + correct but slow Haskell code (14 Nov 2016)
+set2 = {'generation': (0.287, {'C++': [0.216], 'Julia': [0.276], 'Pypy':
+    [0.503], 'Python': [17.4], 'Haskell': [0.824], 'R': [28.1],
+    'C#': [0.386], 'Rust': [0.55]}), 'output': (0.569, {'C++': [0.948],
+        'Julia': [2.45], 'Pypy': [0.02], 'Python': [5.5], 'Haskell': [6.4], 'R':
+        [11.6], 'C#': [0.832]}), 'input': (0.512, {'C++': [0.661], 'Julia':
+            [0.804], 'Pypy': [0.058], 'Python': [1.26], 'Haskell': [17.4], 'R':
+            [4.13], 'C#': [0.701]})}
+# fast versions from set1 + new Haskell code (14 Nov 2016)
+set3 = {'generation': (0.287, {'C++': [0.216], 'Julia': [0.276], 'Pypy':
+    [0.503], 'Python': [2.29], 'Haskell': [0.379], 'R': [0.961],
+    'C#': [0.386], 'Rust': [0.214]}), 'output': (0.569, {'C++': [0.948],
+        'Julia': [2.45], 'Pypy': [0.02], 'Python': [5.5], 'Haskell': [0.023], 'R':
+        [11.6], 'C#': [0.832]}), 'input': (0.512, {'C++': [0.661], 'Julia':
+            [0.804], 'Pypy': [0.058], 'Python': [1.26], 'Haskell': [0.07], 'R':
+            [4.13], 'C#': [0.701]})}

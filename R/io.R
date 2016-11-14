@@ -32,7 +32,7 @@ filename <- "generated_rand_numbers"
 n <- 2000000
 
 t_1 <- Sys.time()
-a <- createRandoms(n)
+#a <- createRandoms(n)
 t0 <- Sys.time()
 
 a <- createRandomsFast(n)

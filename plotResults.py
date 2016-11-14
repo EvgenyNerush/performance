@@ -27,7 +27,8 @@ langstyle = {'C': {'color': 'DodgerBlue'}, 'C++': {'color': 'DeepSkyBlue'},
 teststyle = {'generation': {'marker': 'o'}, 'output': {'marker': '>'}, 'input':
         {'marker': '<'}}
 
-print(results.set1)
+myset = results.set3
+print(myset)
 
 f = plt.figure(figsize=(6.65, 5.9), dpi = 300)
 gs = gridspec.GridSpec(2, 2)
@@ -66,7 +67,7 @@ yscales = [1.5, 4, 11, 50]
 
 for i in range(4):
     plt.subplot(gs[int(i / 2), i % 2])
-    plotPoints(yscales[i], results.set1)
+    plotPoints(yscales[i], myset)
     plt.xlabel('C time, s')
     plt.ylabel('lang time, s')
 
