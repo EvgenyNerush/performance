@@ -68,6 +68,17 @@ The obtained results are shown in Figure below.
 
 ![fast](results_set3.png)
 
+#### Update: Kotlin
+
+Kotlin generates random numbers in 1.2 s (the 1st variant, with `nextDouble` from
+`kotlin.random.Random`, openjdk-11.0.12), whereas C++ does it in 0.25 s, five times faster. The
+second variant with hand-written RNG (Park-Miller) yield 1.3 s. The third variant which uses
+Park-Miller RNG, does not store the random numbers and computes sum on-the-fly, takes 1.2 s.
+
+With Kotlin Native (1.4) the first variant spends 3.5 s, the second one - 1.15 s, and the third one
+just 0.43 s. All this looks quite confusing, however, Kotlin for JVM looks suitable for
+not-too-heavy calculations.
+
 ### Conclusion
 
 Performance of all the tested languages is not as crucial as choosing of 'right' methods and
