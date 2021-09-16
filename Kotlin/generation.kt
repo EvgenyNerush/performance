@@ -6,7 +6,7 @@ import kotlin.system.measureTimeMillis
 
 fun main() {
     val n = 2_000_000
-    val rands = ArrayList<Double>(n)
+    val rands = DoubleArray(n)
     val gen = Random(321)
 
     // 1st variant
@@ -17,7 +17,7 @@ fun main() {
             val r1 = gen.nextDouble()
             val r2 = gen.nextDouble()
             if (r2 < asin(sqrt(r1)) / (PI / 2)) {
-                rands.add(r1)
+                rands.set(i, r1)
                 i++
             }
         }
@@ -51,7 +51,7 @@ fun main() {
             s = pm(s)
             val r2 = toD(s)
             if (r2 < asin(sqrt(r1)) / (PI / 2)) {
-                rands[i] = r1
+                rands.set(i, r1)
                 i++
             }
         }
@@ -86,3 +86,4 @@ fun main() {
     println("generation takes ${1e-3 * duration3} s")
 
 }
+

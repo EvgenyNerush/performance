@@ -70,14 +70,21 @@ The obtained results are shown in Figure below.
 
 #### Update: Kotlin
 
-Kotlin generates random numbers in 1.2 s (the 1st variant, with `nextDouble` from
-`kotlin.random.Random`, openjdk-11.0.12), whereas C++ does it in 0.25 s, five times faster. The
-second variant with hand-written RNG (Park-Miller) yield 1.3 s. The third variant which uses
-Park-Miller RNG, does not store the random numbers and computes sum on-the-fly, takes 1.2 s.
+Kotlin generates random numbers in **1.2** s (with `nextDouble` from `kotlin.random.Random`,
+openjdk-11.0.12), whereas C++ does it in 0.25 s, five times faster. This 1st variant uses
+`ArrayList<Double>`.
 
-With Kotlin Native (1.4) the first variant spends 3.5 s, the second one - 1.15 s, and the third one
-just 0.43 s. All this looks quite confusing, however, Kotlin for JVM looks suitable for
-not-too-heavy calculations.
+To check if kotlin Random is slow, the second variant with the hand-written RNG (Park-Miller) yield
+**1.3** s.  Thus Random is fast. The third variant which uses Park-Miller RNG, does not store the
+random numbers and computes sum on-the-fly, which takes almost the same time **1.2** s. Thus, no
+tricks are needed if you are ok with the JVM speed (anyway it is much faster than plain
+Python or R code).
+
+With Kotlin Native (1.4) the first, the second and the third variants are: **3.5, 1.15, 0.43** s,
+respectively. All this looks quite confusing: Kotlin compiler looks less efficient than JIT in JVM.
+With array which stores unboxed values (DoubleArray) the results are **2.6, 0.45, 0.43** s. Thus,
+using unboxed values and compilation to native (machine code), one can get code just two times
+slower than the C++ code (the time of C#, Pypy or Haskell).
 
 ### Conclusion
 
