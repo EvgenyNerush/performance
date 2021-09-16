@@ -82,9 +82,9 @@ values.
 
 With Kotlin Native (1.4) the first, the second and the third variants takes: **3.5, 1.15, 0.43** s,
 respectively. All this looks quite confusing: Kotlin compiler looks less efficient than JIT in JVM.
-With array which stores unboxed values (DoubleArray) the results are **2.6, 0.45, 0.43** s. Thus,
-using unboxed values and compilation to native (machine code), one can get code just two times
-slower than the C++ code (the time of C#, Pypy or Haskell).
+However, with array which stores unboxed values (DoubleArray) the results are much better: **2.6,
+0.45, 0.43** s. Thus, using unboxed values and compilation to native (machine code), one can get
+code just two times slower than the C++ code (the time of C#, Pypy or Haskell).
 
 ### Conclusion
 
